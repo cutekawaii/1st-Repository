@@ -1,0 +1,124 @@
+import sys
+import random
+
+
+class Games:
+#####_________________________________________________________________________________OUR RANDOM NUMBER GAME
+    def randnumGame():
+        a = True
+        b = True
+        c = True
+        d = True
+
+        while (a):
+            # Prompts the user if they want to play the game
+            while (b):
+                playornot = input("Would you like to play our guessing game? ")
+                print ("\n")
+                playornot = playornot.lower()
+                if playornot not in ['yes', 'no']:
+                    print ("Please answer with 'yes' or 'no'")  
+                else:
+                    break
+            if (playornot == 'no'):
+                break
+
+            # Counts how many tries it took the player to get it right
+            nTry = 1
+            # Computer will pick a random number between 0 and 10 for the user to guess. Number 11 is not included.
+            randomNumber = random.randrange(0,11)
+
+            #Prompts the user to pick a number between set parameters and is evaluated as well with try and except
+            while (c):
+                try:
+                    userNum = int(input("The computer has a number between 0 and 10, guess the number! "))
+                    if (userNum >= 0) or (userNum <= 10):
+                        if (userNum != randomNumber):
+                            print ("Aww, try again!")
+                            print ("\n")
+                            nTry += 1
+                        if (randomNumber == userNum):
+                            print ("Correct! The random number was", randomNumber)
+                            print ("It took you", nTry, "time(s) to get it right")
+                            print ("\n")
+                            break
+                except ValueError:
+                    print ("Please no decimal places and no letters. The number is between 0 and 10")
+                    print ("\n")
+
+            # Prompts the user if they want to play again
+            while (d):
+                askUser = input("Would you like to play again? ")
+                askUser = askUser.lower()
+                if askUser not in ['yes', 'no']:
+                    print ("Please answer with 'yes' or 'no'")  
+                else:
+                    b = False
+                    break
+            if (askUser == 'no'):
+                print ("Thank you for playing!")
+                print ("\n")
+                break
+
+#####_____________________________________________________________________________________OUR DRAW SQUARE GAME
+    def drawSquare():
+        a = True
+        b = True
+        c = True
+        d = True
+        
+        while (a):
+        # Prompts the user if they want to play the game
+            while (b):
+                playornot = input("Would you like to play our square game? ")
+                print ("\n")
+                playornot = playornot.lower()
+                if playornot not in ['yes', 'no']:
+                    print ("Please answer with 'yes' or 'no'")  
+                else:
+                    break
+            if (playornot == 'no'):
+                break
+        # This will ensure we get an integer
+            while (c):
+                try: 
+                    userInput = int(input("This is our square game, please give us an integer and we will print a square based on those dimensions: "))
+                    break
+                except ValueError:
+                    print ("That will not work, please try again.")
+                print("\n")
+        
+        # This prints our square based on the integer given
+            for z in range (userInput):
+                print ("x ", end="")
+            print ("\n" * -1)
+            if (userInput > 2):
+                for z in range (userInput - 2):
+                    for y in range (userInput):
+                        print("x ", end="")
+                    print ("\n" * -1)
+            if (userInput > 1):
+                for z in range (userInput):
+                    print ("x ", end="")
+                print ("\n")
+
+        # Prompts the user if they want to play again
+            while (d):
+                askUser = input("Would you like to play again? ")
+                askUser = askUser.lower()
+                if askUser not in ['yes', 'no']:
+                    print ("Please answer with 'yes' or 'no'")  
+                else:
+                    b = False
+                    break
+            if (askUser == 'no'):
+                print ("Thank you for playing!")
+                break
+     
+            
+# To call upon our games in our class 
+
+Games.randnumGame()
+Games.drawSquare()
+
+    
